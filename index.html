@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="js/getLoadGroup.js"></script>
+<script src="js/defineUse.js"></script>
+<script>
+  define('a', ['b'], function(b) {
+    return {
+      id: 'a' + b.id
+    };
+  });
+  define('b', [], function() {
+    console.log('run b');
+    return {
+      id: 'b'
+    };
+  });
+  use(['a', 'b'], function(a, b) {
+    console.log(a.id, b.id);
+  });
+  use('a', function(a) {
+    console.log(a.id);
+  });
+  use('b', function(b) {
+    console.log(b.id);
+  });
+</script>
+</body>
+</html>
